@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'albums#index'
-
+   
+   get 'tags/:tag', to: 'albums#index', as: :tag
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

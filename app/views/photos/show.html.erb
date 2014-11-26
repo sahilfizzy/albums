@@ -8,7 +8,7 @@
 	<%= image_tag @photo.image_url.to_s %> 
 </p>
 
-<%= link_to 'back', album_path %>
+<%= link_to 'back', albums_path %>
 
 <h2>Comments</h2>
   <% @photo.comments.each do |comment| %>

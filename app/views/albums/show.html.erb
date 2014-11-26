@@ -13,6 +13,10 @@
     <div class="name"><strong>Image:</strong><%= photo.name %>
     </div>
     
+    <p>
+      Tags: <%= raw photo.tag_list.map { |t| link_to t, tag_path(t)}.join(',') %>
+    </p>
+    
     <div class="photo">  
       <%= image_tag photo.image_url.to_s %>  
     </div>  
@@ -34,6 +38,11 @@
 
   <p>
   	<%= f.file_field :image %>
+  </p>
+
+  <p>
+    <%= f.label :tag_list, "Tags( separated by commas)" %><br>
+    <%= f.text_field :tag_list %>
   </p>
 
   <p>
