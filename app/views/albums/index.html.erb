@@ -11,10 +11,10 @@
   <tbody>
     <% @albums.each do |album| %>
       <tr>
-        <td><%= album.name %></td>
-        <td><%= link_to 'Show', album %></td>
+        <td><h2><%= link_to album.name, album %></h2></td>
+        
         <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /albums
   # GET /albums.json
@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @album = current_user.albums.new
   end
 
   # GET /albums/1/edit
@@ -25,7 +25,7 @@ class AlbumsController < ApplicationController
   # POST /albums
   # POST /albums.json
   def create
-    @album = Album.new(album_params)
+    @album = current_user.albums.new(album_params)
 
     respond_to do |format|
       if @album.save

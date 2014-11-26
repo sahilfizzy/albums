@@ -29,13 +29,16 @@ gem 'turbolinks'
 group :assets do
 	gem "twitter-bootstrap-rails"
 end
-
+	
+gem 'devise'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'carrierwave'
+gem 'mini_magick'
+#gem 'rmagick', '2.13.2'
+	
 group :development do
-    
-    gem 'devise'
-
 	gem 'better_errors'
-	# gem "binding_of_caller"
+	gem "binding_of_caller"
 	gem 'annotate'
 	# gem 'bullet'
 	gem 'byebug'
@@ -45,13 +48,7 @@ group :development do
 	gem 'pry'
 	# gem 'pry-doc'
 	gem 'quiet_assets'
-	# gem 'rack-mini-profiler'
-	# gem 'railroady'
-	# gem 'rails-footnotes', '>= 3.7.5.rc4'
-	# gem 'rails_best_practices'
-	# gem 'reek'
-	# gem 'request-log-analyzer'
-	# gem 'smusher'
+	gem 'byebug'
 end
 
 # Use ActiveModel has_secure_password

@@ -1,9 +1,45 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Album Name:</strong>
   <%= @album.name %>
 </p>
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Edit Album Name', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
+
+
+<div id="photos">  
+  <% @album.photos.each do |photo| %>  
+    <div class="name"><strong>Image:</strong><%= photo.name %>
+    </div>
+    
+    <div class="photo">  
+      <%= image_tag photo.image_url.to_s %>  
+    </div>  
+
+  <% end %>  
+
+  <div class="clear"></div>  
+</div> 
+
+
+<h2>Add a photo:</h2>
+<%= form_for([@album, @album.photos.build], :html => {:multipat => true}) do |f| %>
+
+  <p>
+  	<%= f.label :name %><br>
+      <%= f.text_field :name %>
+  </p>
+
+
+  <p>
+  	<%= f.file_field :image %>
+  </p>
+
+  <p>
+      <%= f.submit %>
+  </p>
+
+<% end %>
+
+
