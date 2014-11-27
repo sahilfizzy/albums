@@ -1,18 +1,18 @@
+<%= button_to 'Back', albums_path, method: :get %>
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Album Name:</strong>
   <%= @album.name %>
 </p>
-<%= link_to 'Edit Album Name', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
-
+<%= link_to 'Edit Album Name', edit_album_path(@album) %>
 
 <div id="photos">  
   <% @album.photos.each do |photo| %>  
     <div class="name"><strong>Image:</strong><%= photo.name %>
     </div>
-    
+     
+   <%= link_to 'show image', album_photo_path(@album,photo) %> 
     <p>
       Tags: <%= raw photo.tag_list.map { |t| link_to t, tag_path(t)}.join(',') %>
     </p>

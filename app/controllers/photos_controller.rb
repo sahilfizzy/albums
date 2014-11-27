@@ -7,7 +7,10 @@ class PhotosController < ApplicationController
   def new
     @photo = @album.photos.new
   end
-
+  
+  def edit
+    
+  end
 
   def create
     @album = Album.find(params[:album_id])
