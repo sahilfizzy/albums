@@ -33,10 +33,12 @@ gem 'therubyracer'
 
 gem 'rails_12factor', group: :production
 
-group :assets do
-	gem "twitter-bootstrap-rails"
-end
-	
+# group :assets do
+# 	gem "twitter-bootstrap-rails"
+# end
+gem 'bootstrap-sass', '~> 3.3.1'
+# gem 'sass-rails', '>= 3.2'
+
 gem 'devise'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
