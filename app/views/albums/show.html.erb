@@ -11,14 +11,14 @@
   <% @album.photos.each do |photo| %>  
     <div class="name"><strong>Image:</strong><%= photo.name %>
     </div>
-     
-   <%= link_to 'show image', album_photo_path(@album,photo), class: 'btn btn-info' %> 
+    
+   <%= link_to 'view image', album_photo_path(@album,photo)%> 
     <p>
       Tags: <%= raw photo.tag_list.map { |t| link_to t, tag_path(t)}.join(',') %>
     </p>
     
     <div class="photo">  
-      <%= image_tag photo.image_url.to_s %>  
+      <%= image_tag photo.image_url(:thumb).to_s %>  
     </div>  
 
   <% end %>  

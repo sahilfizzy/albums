@@ -37,6 +37,7 @@ gem 'rails_12factor', group: :production
 # 	gem "twitter-bootstrap-rails"
 # end
 gem 'bootstrap-sass', '~> 3.3.1'
+gem 'autoprefixer-rails'
 # gem 'sass-rails', '>= 3.2'
 
 gem 'devise'

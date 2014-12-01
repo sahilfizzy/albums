@@ -1,3 +1,5 @@
+<%= button_to 'back', albums_path, method: :get %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -8,7 +10,7 @@
 	<%= image_tag @photo.image_url.to_s %> 
 </p>
 
-<%= link_to 'back', albums_path %>
+<%= link_to 'Destroy', @photo, :confirm => 'Are you sure?', :method => :delete %></td>
 
 <h2>Comments</h2>
   <% @photo.comments.each do |comment| %>

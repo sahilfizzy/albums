@@ -13,7 +13,7 @@
       <tr>
         <td><h2><%= link_to album.name, album %></h2></td>
         
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
+        <td><%= link_to 'Edit', edit_album_path(album), class: 'btn btn-default'%></td>
         <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>

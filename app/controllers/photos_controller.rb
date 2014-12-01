@@ -9,14 +9,19 @@ class PhotosController < ApplicationController
     @photo = @album.photos.new
   end
   
-  def edit
-    
-  end
 
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.create(photo_params)
     redirect_to album_path(@album)
+  end
+
+  def destroy
+    @photo.destroy
+    respond_to do |format|
+      format.html { redirect_to album_photo_url, notice: 'Album was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
