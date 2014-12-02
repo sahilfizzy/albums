@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_filter :check_id, only: [:edit, :destroy]
 
   # GET /albums
   # GET /albums.json
@@ -64,6 +65,13 @@ class AlbumsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def check_id
+      if current_user != Album.find(params[:id]).user
+         flash[:notice] = 'You are unauthorized user.'
+         redirect_to root_path
+      end
+    end  
+
     def set_album
       @album = Album.find(params[:id])
     end

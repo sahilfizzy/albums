@@ -1,34 +1,32 @@
-<%= button_to 'back', albums_path, method: :get %>
+<h4><%= link_to 'Back', albums_path, class: "btn btn-default", class: "label label-default" %></h4>
 
-<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p><br>
 
-<p>
-  <strong>Name:</strong>
-  <%= @photo.name %>
-</p>
+
 <p>
 	<%= image_tag @photo.image_url.to_s %> 
 </p>
-
-<%= link_to 'Destroy', @photo, :confirm => 'Are you sure?', :method => :delete %></td>
 
 <h2>Comments</h2>
   <% @photo.comments.each do |comment| %>
 	  <p>
 	    <strong>Comment:</strong>
-	    <%= comment.comment %>
+      <div class="well">
+	      <%= comment.comment %>
+      </div>
 	  </p>
   <% end %>
 
+<% if user_signed_in? %>
+  <h2>Add a comment:</h2>
+  <%= form_for([@photo, @photo.comments.build]) do |f| %>
+    <p>
+    	<%= f.label :comment %><br>
+    	<%= f.text_field :comment %>
+    </p>
 
-<h2>Add a comment:</h2>
-<%= form_for([@photo, @photo.comments.build]) do |f| %>
-  <p>
-  	<%= f.label :comment %><br>
-  	<%= f.text_field :comment %>
-  </p>
-
-  <p>
-  	<%= f.submit %>
-  </p>
+    <p>
+    	<%= f.submit %>
+    </p>
   <% end %>
+<% end %>

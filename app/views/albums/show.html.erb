@@ -1,54 +1,69 @@
-<%= button_to 'Back', albums_path, method: :get %>
+<h4><%= link_to 'Back', albums_path, class: "btn btn-default", class: "label label-default" %></h4>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Album Name:</strong>
-  <%= @album.name %>
-</p>
-<%= link_to 'Edit Album Name', edit_album_path(@album), class: "btn" %>
+<h3 class="text-right">
+  <% if user_signed_in? and @album.user == current_user  %>
+  <%= link_to 'Edit Album Name', edit_album_path(@album), class: "btn btn-default", class: "label label-default" %>
+  <%= link_to 'Destroy', album_path(@album), :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-default', class: "label label-default" %>
+  <% end %>
+</h3>
 
-<div id="photos">  
-  <% @album.photos.each do |photo| %>  
-    <div class="name"><strong>Image:</strong><%= photo.name %>
+<p>
+  <h2 class="text-center">
+    <strong>Album:<%= @album.name %></strong>
+  </h2>
+</p>
+
+
+
+
+<div class="photo">  
+  
+    <div class="row">
+      <% @album.photos.each do |photo| %> 
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <%= link_to (image_tag photo.image_url.to_s), album_photo_path(@album, photo) %>
+              <div class="text-center"><strong><%= photo.name %></strong>
+                 <p><%= link_to 'view image', album_photo_path(@album,photo), class: "btn btn-default", class: "btn btn-primary"%>
+                 </p> 
+              </div> 
+          </div>  
+        </div>
+      <% end %>
     </div>
     
-   <%= link_to 'view image', album_photo_path(@album,photo)%> 
-    <p>
-      Tags: <%= raw photo.tag_list.map { |t| link_to t, tag_path(t)}.join(',') %>
-    </p>
-    
-    <div class="photo">  
-      <%= image_tag photo.image_url(:thumb).to_s %>  
-    </div>  
-
-  <% end %>  
 
   <div class="clear"></div>  
 </div> 
 
 
-<h2>Add a photo:</h2>
-<%= form_for([@album, @album.photos.build], :html => {:multipat => true}) do |f| %>
 
-  <p>
-  	<%= f.label :name %><br>
-      <%= f.text_field :name %>
-  </p>
+<% if user_signed_in? and @album.user == current_user %>
+  <h2>Add a photo:</h2>
+  <%= form_for([@album, @album.photos.build], :html => {:multipat => true}) do |f| %>
+
+    <p>
+      <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </p>
 
 
-  <p>
-  	<%= f.file_field :image %>
-  </p>
+    <p>
+      <%= f.file_field :image %>
+    </p>
 
-  <p>
-    <%= f.label :tag_list, "Tags( separated by commas)" %><br>
-    <%= f.text_field :tag_list %>
-  </p>
-
-  <p>
+    <p>
+      <%= f.label :tag_list, "Tags( separated by commas)" %><br>
+      <%= f.text_field :tag_list %>
+    </p>
+    
+    <p>
       <%= f.submit %>
-  </p>
-
+    </p>
+  <% end %>
 <% end %>
+
+
 
 

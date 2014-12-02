@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 	def create
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.create(comment_params)
-    redirect_to album_photo_path(@photo)
+    redirect_to album_photo_path(@photo.album, @photo)
   end
  
   private

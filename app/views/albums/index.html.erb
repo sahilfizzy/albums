@@ -3,23 +3,25 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <table class="table table-hover">
     <% @albums.each do |album| %>
       <tr>
         <td><h2><%= link_to album.name, album %></h2></td>
-        
-        <td><%= link_to 'Edit', edit_album_path(album), class: 'btn btn-default'%></td>
-        <td><%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %></td>
+       
       </tr>
     <% end %>
+  </table>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Album', new_album_path %>
+<% if user_signed_in? %>
+<%= link_to 'New Album', new_album_path, class: "btn btn-default", class: "btn btn-primary btn-lg" %>
+<% end %>
