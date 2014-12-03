@@ -22,10 +22,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-gem 'therubyracer'
 gem 'rails_12factor', group: :production
 
-gem 'less-rails'
+gem 'therubyracer'
+gem 'less-rails' #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 # gem 'bootstrap-sass', '~> 3.3.1'
 # gem 'autoprefixer-rails'
