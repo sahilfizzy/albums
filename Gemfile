@@ -25,12 +25,11 @@ gem 'turbolinks'
 gem 'therubyracer'
 gem 'rails_12factor', group: :production
 
-# group :assets do
-# 	gem "twitter-bootstrap-rails"
-# end
-gem 'bootstrap-sass', '~> 3.3.1'
-gem 'autoprefixer-rails'
-gem 'sprockets-rails'
+gem 'less-rails'
+gem "twitter-bootstrap-rails"
+# gem 'bootstrap-sass', '~> 3.3.1'
+# gem 'autoprefixer-rails'
+# gem 'sprockets-rails'
 # gem 'sass-rails', '>= 3.2'
 
 gem 'devise'
